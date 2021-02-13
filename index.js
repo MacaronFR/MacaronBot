@@ -11,6 +11,9 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
+	if(msg.content.indexOf("!new") === 0){
+		msg.reply(msg.channel.name)
+	}
 	if(msg.content === 'ping'){
 		msg.reply("Pong le retour :)")
 		.catch(console.error);
