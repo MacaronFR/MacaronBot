@@ -52,10 +52,11 @@ client.on('message',(msg)=>{
 			.setURL("https://macaron-dev.fr")
 			.setAuthor("MacaronBot")
 			.setDescription("All the command allowed")
-			.addFields(
-				{name: "Command :", value: "!help => display this panel\\" +
-						"!new <channelName> => Create new channel with name channelName\\" +
-						"!del <channelName> => Delete a channel with name channelName"}
+			.addField(
+				"Command :",
+				"!help => display this panel\\" +
+				"!new <channelName> => Create new channel with name channelName\\" +
+				"!del <channelName> => Delete a channel with name channelName"
 			)
 			.setTimestamp()
 			.setFooter("Copyrigth : Macaron macaron-dev.fr");
