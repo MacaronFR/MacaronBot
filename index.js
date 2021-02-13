@@ -24,10 +24,10 @@ client.on('message',(msg)=>{
 					msg.channel.send("Erreur lors de la création");
 				})
 			}else{
-				msg.channel.send("Channel already exist");
+				msg.channel.send("Ce channel existe déjà");
 			}
 		}else{
-			msg.channel.send("No channel name. Usage !new channelName");
+			msg.channel.send("Aucun titre de channel. Utilisation !new channelName");
 		}
 	}else if(msg.content.startsWith("!del")){
 		let name = msg.content.substring(5);
@@ -35,28 +35,28 @@ client.on('message',(msg)=>{
 			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
 			if(chan !== undefined){
 				chan.delete().then(()=>{
-					msg.channel.send("Channel deleted");
+					msg.channel.send("Channel supprimé");
 				}).catch(()=>{
-					msg.channel.send("Error while deleting channel");
+					msg.channel.send("Erreur lors de la suppression");
 				})
 			}else{
-				msg.channel.send("No channel named "+name);
+				msg.channel.send("Aucun channel nommé "+name);
 			}
 		}else{
-			msg.channel.send("No channel name. Usage !del channelName");
+			msg.channel.send("Aucun titre de channel. Utilisation !del channelName");
 		}
 	}else if(msg.content === '!help'){
 		const helpEmbed = new MessageEmbed()
 			.setColor('#0099ff')
-			.setTitle("Help")
+			.setTitle("Aide")
 			.setURL("https://macaron-dev.fr")
 			.setAuthor("MacaronBot")
-			.setDescription("All the command allowed")
+			.setDescription("Toute les commandes possible")
 			.addFields({
-					name: "Command :",
-					value: "!help => display this panel\n" +
-							"!new <channelName> => Create new channel with name channelName\n" +
-						"!del <channelName> => Delete a channel with name channelName"
+					name: "Commande :",
+					value: "!help => Afficphe cette aide\n" +
+							"!new <channelName> => Créer un nouveau channel nommé channelName\n" +
+						"!del <channelName> => Supprime un channel nommé channelName"
 				}
 			)
 			.setTimestamp()
