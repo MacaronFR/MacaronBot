@@ -35,7 +35,7 @@ client.on('message',(msg)=>{
 			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
 			if(chan !== undefined){
 				if(msg.guild.channels.cache.delete(chan.id)){
-					msg.channel.send("Channel deleted"):
+					msg.channel.send("Channel deleted");
 				}else{
 					msg.channel.send("Error while deleting channel");
 				}
