@@ -8,12 +8,12 @@ const client = new Client({
 
 client.on('ready', ()=>{
 	
-	client.user.setActivity('Manager', {type: 'STREAMING'});
+	client.user.setActivity('Bonjour', {type: 'STREAMING'});
 });
 
 client.on('message',(msg)=>{
 	if(msg.content === 'ping'){
-		msg.reply("Connard")
+		msg.reply("Pong le retour")
 		.catch(console.error);
 	}
 });
