@@ -51,7 +51,7 @@ client.on('message',(msg)=>{
 			.setTitle("Aide")
 			.setURL("https://macaron-dev.fr")
 			.setAuthor("MacaronBot")
-			.setDescription("Toute les commandes possible")
+			.setDescription("Toute les commandes disponible")
 			.addFields({
 					name: "Commande :",
 					value: "!help => Afficphe cette aide\n" +
