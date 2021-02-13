@@ -6,7 +6,7 @@ const client = new Client({
 	partials: ['GUILD_MEMBER','CHANNEL','USER','REACTION']
 });
 client.on('ready', ()=>{
-	client.user.setActivity('Bonjour', {type: 'STREAMING'});
+	client.user.setActivity('!help', {type: 'STREAMING'});
 });
 
 client.on('message',(msg)=>{
@@ -18,7 +18,7 @@ client.on('message',(msg)=>{
 					type: 'text',
 					permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
 				}).then(r=>{
-					msg.channel.send("Channel créer");
+					msg.channel.send("Channel créé");
 				}).catch((r)=>{
 					console.log(r);
 					msg.channel.send("Erreur lors de la création");
