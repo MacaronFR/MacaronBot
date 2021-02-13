@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const {Client} = require('discord.js');
+const {Client,MessageEmbed} = require('discord.js');
 const config = require("./config.json");
 
 const client = new Client({
@@ -45,6 +45,21 @@ client.on('message',(msg)=>{
 		}else{
 			msg.channel.send("No channel name. Usage !del channelName");
 		}
+	}else if(msg.content === '!help'){
+		const helpEmbed = new MessageEmbed()
+			.setColor('#0099ff')
+			.setTitle("Help")
+			.setURL("https://macaron-dev.fr")
+			.setAuthor("MacaronBot")
+			.setDescription("All the command allowed")
+			.addFields(
+				{name: "Command :", value: "!help => display this panel\\" +
+						"!new <channelName> => Create new channel with name channelName\\" +
+						"!del <channelName> => Delete a channel with name channelName"}
+			)
+			.setTimestamp()
+			.setFooter("Copyrigth : Macaron macaron-dev.fr");
+		msg.channel.send(helpEmbed);
 	}
 	if(msg.content === 'ping'){
 		msg.reply("Pong le retour :)")
