@@ -34,11 +34,11 @@ client.on('message',(msg)=>{
 		if(name !== ""){
 			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
 			if(chan !== undefined){
-				if(msg.guild.channels.cache.delete(chan.id)){
+				chan.delete().then(()=>{
 					msg.channel.send("Channel deleted");
-				}else{
+				}).catch(()=>{
 					msg.channel.send("Error while deleting channel");
-				}
+				})
 			}else{
 				msg.channel.send("No channel named "+name);
 			}
