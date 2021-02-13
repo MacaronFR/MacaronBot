@@ -7,6 +7,7 @@ const client = new Client({
 });
 
 client.on('ready', ()=>{
+	
 	client.user.setActivity('Bonjour', {type: 'STREAMING'});
 });
 
