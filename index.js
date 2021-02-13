@@ -10,20 +10,32 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
-	console.log(msg.content.startsWith("!new"));
 	if(msg.content.startsWith("!new")){
-		msg.channel.send("oui ?");
-		let name = msg.content.substring(6);
+		let name = msg.content.substring(5);
 		if(name !== ""){
-			msg.guild.channels.create(name, {
-				type: 'voice',
-				permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
-	 		}).then(r=>{
-				msg.channel.send("OK");
-			}).catch((r)=>{
-				console.log(r);
-				msg.channel.send("NIKK");
-			})
+			if(!msg.guild.channels.cache.some((channel)=>channel.name === name)){
+				msg.guild.channels.create(name, {
+					type: 'voice',
+					permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
+				}).then(r=>{
+					msg.channel.send("Channel créer");
+				}).catch((r)=>{
+					console.log(r);
+					msg.channel.send("Erreur lors de la création");
+				})
+			}else{
+				msg.channel.send("Channel already exist");
+			}
+		}else{
+			msg.channel.send("No name. Usage !new channelName");
+		}
+	}else if(msg.content.startsWith("!del")){
+		let name = msg.content.substring(5);
+		if(name !== ""){
+			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
+			if(chan !== undefined){
+				msg.guild.channels.cache.delete(chan.id)
+			}
 		}
 	}
 	if(msg.content === 'ping'){
