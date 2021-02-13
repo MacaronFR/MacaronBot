@@ -27,15 +27,23 @@ client.on('message',(msg)=>{
 				msg.channel.send("Channel already exist");
 			}
 		}else{
-			msg.channel.send("No name. Usage !new channelName");
+			msg.channel.send("No channel name. Usage !new channelName");
 		}
 	}else if(msg.content.startsWith("!del")){
 		let name = msg.content.substring(5);
 		if(name !== ""){
 			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
 			if(chan !== undefined){
-				msg.guild.channels.cache.delete(chan.id)
+				if(msg.guild.channels.cache.delete(chan.id)){
+					msg.channel.send("Channel deleted"):
+				}else{
+					msg.channel.send("Error while deleting channel");
+				}
+			}else{
+				msg.channel.send("No channel named "+name);
 			}
+		}else{
+			msg.channel.send("No channel name. Usage !del channelName");
 		}
 	}
 	if(msg.content === 'ping'){
