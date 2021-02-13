@@ -15,7 +15,7 @@ client.on('message',(msg)=>{
 		if(name !== ""){
 			if(!msg.guild.channels.cache.some((channel)=>channel.name === name)){
 				msg.guild.channels.create(name, {
-					type: 'voice',
+					type: 'text',
 					permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
 				}).then(r=>{
 					msg.channel.send("Channel créer");
