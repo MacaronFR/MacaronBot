@@ -11,7 +11,6 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
-	msg.channel.send(msg.content.startsWith("!new"))
 	if(msg.content.startsWith("!new")){
 		msg.channel.send("oui ?");
 		let name = msg.content.substring(6);
