@@ -54,8 +54,8 @@ client.on('message',(msg)=>{
 			.setDescription("All the command allowed")
 			.addField(
 				"Command :",
-				"!help => display this panel\\" +
-				"!new <channelName> => Create new channel with name channelName\\" +
+				"!help => display this panel\n" +
+				"!new <channelName> => Create new channel with name channelName\n" +
 				"!del <channelName> => Delete a channel with name channelName"
 			)
 			.setTimestamp()
