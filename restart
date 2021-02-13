@@ -1,4 +1,0 @@
-#!/bin/bash
-sudo systemctl stop discordstaspais
-sudo chmod 0755 index.js
-sudo systemctl start discordstaspais
