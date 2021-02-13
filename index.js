@@ -12,6 +12,7 @@ client.on('ready', ()=>{
 
 client.on('message',(msg)=>{
 	if(msg.content.startsWith("!new")){
+		msg.channel.send("oui ?");
 		let name = msg.content.substring(6);
 		if(name !== ""){
 			let test = new Guild
