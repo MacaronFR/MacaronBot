@@ -12,7 +12,7 @@ client.on('ready', ()=>{
 
 client.on('message',(msg)=>{
 	if(msg.content === 'ping'){
-		msg.reply("pong")
+		msg.reply("Connard")
 		.catch(console.error);
 	}
 });
