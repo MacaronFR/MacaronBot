@@ -6,7 +6,6 @@ const client = new Client({
 });
 
 client.on('ready', ()=>{
-	
 	client.user.setActivity('Manager', {type: 'STREAMING'});
 });
 
