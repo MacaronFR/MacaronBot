@@ -15,7 +15,14 @@ client.on('message',(msg)=>{
 		let name = msg.content.substring(6);
 		if(name !== ""){
 			let test = new Guild
-			msg.guild.channels.create(name, {type: 'voice', permissionOverwrites: {id: msg.guild.id, allow:['VIEW_CHANNEL']}})
+			msg.guild.channels.create(name, {
+				type: 'voice',
+				permissionOverwrites: {id: msg.guild.id, allow: ['VIEW_CHANNEL']}
+	 		}).then(r=>{
+				msg.channel.send("OK");
+			}).catch(()=>{
+				msg.channel.send("NIKK");
+			})
 		}
 	}
 	if(msg.content === 'ping'){
