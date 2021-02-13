@@ -1,4 +1,4 @@
-#/usr/bin/env node
+#!/usr/bin/env node
 const {Client} = require('discord.js');
 const config = require("./config.json");
 
