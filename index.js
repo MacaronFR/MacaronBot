@@ -6,7 +6,7 @@ const client = new Client({
 });
 
 client.on('ready', ()=>{
-	console.log("Connecté");
+	console.log("Connecté")
 	client.user.setActivity('Manager', {type: 'STREAMING'});
 });
 
