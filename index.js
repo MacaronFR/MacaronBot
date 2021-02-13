@@ -20,7 +20,6 @@ client.on('message',(msg)=>{
 				}).then(r=>{
 					msg.channel.send("Channel créé");
 				}).catch((r)=>{
-					console.log(r);
 					msg.channel.send("Erreur lors de la création");
 				})
 			}else{
@@ -49,7 +48,7 @@ client.on('message',(msg)=>{
 		const helpEmbed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle("Aide")
-			.setURL("https://macaron-dev.fr")
+			.setURL("http://discord.macaron-dev.fr")
 			.setAuthor("MacaronBot")
 			.setDescription("Toute les commandes disponible")
 			.addFields({
