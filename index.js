@@ -11,8 +11,12 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
-	if(msg.content.indexOf("!new") === 0){
-		msg.reply(msg.channel.name)
+	if(msg.content.startsWith("!new")){
+		let name = msg.content.substring(6);
+		if(name !== ""){
+			let test = new Guild
+			msg.guild.channels.create(name, {type: 'voice', permissionOverwrites: {id: msg.guild.id, allow:['VIEW_CHANNEL']}})
+		}
 	}
 	if(msg.content === 'ping'){
 		msg.reply("Pong le retour :)")
