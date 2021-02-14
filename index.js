@@ -12,15 +12,15 @@ client.on('ready', ()=>{
 client.on('message',(msg)=>{
 	let command = msg.content.split(" ");
 	if(command[0] === "!new"){
-		let name = msg.content.substring(5);
+		let name = command[1];
 		if(msg.content[4] === " " && name !== ""){
 			if(!msg.guild.channels.cache.some((channel)=>channel.name === name)){
 				msg.guild.channels.create(name, {
 					type: 'text',
 					permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
-				}).then(r=>{
+				}).then(()=>{
 					msg.channel.send("Channel créé");
-				}).catch((r)=>{
+				}).catch(()=>{
 					msg.channel.send("Erreur lors de la création");
 				})
 			}else{
