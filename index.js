@@ -10,7 +10,9 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
-	let command = msg.content.split(" ");
+	let command = msg.content.split(" ").filter(function(value){
+		return value !== "";
+	});
 	if(command[0] === "!new"){
 		let name = command[1];
 		if(msg.content[4] === " " && name !== ""){
