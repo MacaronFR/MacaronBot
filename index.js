@@ -68,12 +68,16 @@ client.on('message',(msg)=>{
 		}else if(command[1] === "type"){
 			if(command[2] === "voice"){
 				if(config.settings[msg.guild.id]){
-					msg.channel.send("NIKK");
+					config.settings[msg.guild.id].type = "voice"
 				}else{
-					msg.channel.send("merde");
+					config.settings[msg.guild.id] = {type: "voice", "group": "none"}
 				}
 			}else if(command[2] === "text"){
-			
+				if(config.settings[msg.guild.id]){
+					config.settings[msg.guild.id].type = "text"
+				}else{
+					config.settings[msg.guild.id] = {type: "text", "group": "none"}
+				}
 			}
 		}
 	}
