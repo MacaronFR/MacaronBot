@@ -67,7 +67,7 @@ client.on('message',(msg)=>{
 		
 		}else if(command[1] === "type"){
 			if(command[2] === "voice"){
-				if(config.settings[msg.guild.id]){
+				if(config.settings[msg.guild.id] !== undefined){
 					msg.channel.send("NIKK");
 				}else{
 					msg.channel.send("merde");
