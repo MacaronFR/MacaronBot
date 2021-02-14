@@ -21,7 +21,6 @@ client.on('message',(msg)=>{
 	}else if(command[0] === '!help'){
 		botcommand.help(msg);
 	}else if(command[0] === "!set"){
-		msg.channel.send("Test juste pour voir");
 		botcommand.set(msg, command);
 	}
 	if(msg.content === 'ping'){
