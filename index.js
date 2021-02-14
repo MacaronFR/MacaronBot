@@ -10,9 +10,10 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
-	if(msg.content.startsWith("!new ")){
+	let command = msg.content.split(" ");
+	if(command[0] === "!new"){
 		let name = msg.content.substring(5);
-		if(name !== ""){
+		if(msg.content[4] === " " && name !== ""){
 			if(!msg.guild.channels.cache.some((channel)=>channel.name === name)){
 				msg.guild.channels.create(name, {
 					type: 'text',
