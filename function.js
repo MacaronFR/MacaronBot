@@ -1,7 +1,6 @@
 const fs = require("fs")
 module.exports = {
 	writeJSON: function(object){
-		console.log(object);
 		fs.writeFile("config.json", JSON.stringify(object), (err)=>{console.log(err)});
 	},
 	setSettings: function(object, id, name, value){
@@ -11,5 +10,8 @@ module.exports = {
 			object.settings[id] = {"type": "text", "group": "none"};
 			object.settings[id].name = value;
 		}
+	},
+	channelExist(channelManager, name){
+		return channelManager.cache.some((channel)=>channel.name === name)
 	}
 }
