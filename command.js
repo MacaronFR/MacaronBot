@@ -67,6 +67,7 @@ module.exports = {
 			if(command[2] === "voice" && command[2] === "text"){
 				fn.setSettings(config, msg.guild.id, "type", command[2]);
 				fn.writeJSON(config);
+				msg.channel.send("Type de Channel réglé à "+ command[2]);
 			}
 		}
 	}
