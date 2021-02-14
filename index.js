@@ -10,7 +10,7 @@ client.on('ready', ()=>{
 });
 
 client.on('message',(msg)=>{
-	if(msg.content.startsWith("!new")){
+	if(msg.content.startsWith("!new ")){
 		let name = msg.content.substring(5);
 		if(name !== ""){
 			if(!msg.guild.channels.cache.some((channel)=>channel.name === name)){
@@ -28,7 +28,7 @@ client.on('message',(msg)=>{
 		}else{
 			msg.channel.send("Aucun titre de channel. Utilisation !new channelName");
 		}
-	}else if(msg.content.startsWith("!del")){
+	}else if(msg.content.startsWith("!del ")){
 		let name = msg.content.substring(5);
 		if(name !== ""){
 			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
@@ -61,7 +61,7 @@ client.on('message',(msg)=>{
 			.setTimestamp()
 			.setFooter("Copyrigth : Macaron macaron-dev.fr");
 		msg.channel.send(helpEmbed);
-	}else if(msg.content.startsWith("!set")){
+	}else if(msg.content.startsWith("!set ")){
 		msg.channel.send("KKK");
 	}
 	if(msg.content === 'ping'){
