@@ -30,10 +30,9 @@ client.on('message',(msg)=>{
 		}else{
 			msg.channel.send("Aucun titre de channel. Utilisation !new channelName");
 		}
-	}else if(msg.content.startsWith("!del ")){
-		let name = msg.content.substring(5);
-		if(name !== ""){
-			let chan = msg.guild.channels.cache.find(channel => channel.name === name);
+	}else if(command[0] === "!del"){
+		if(command[1] !== ""){
+			let chan = msg.guild.channels.cache.find(channel => channel.name === command[1]);
 			if(chan !== undefined){
 				chan.delete().then(()=>{
 					msg.channel.send("Channel supprimé");
@@ -41,12 +40,12 @@ client.on('message',(msg)=>{
 					msg.channel.send("Erreur lors de la suppression");
 				})
 			}else{
-				msg.channel.send("Aucun channel nommé "+name);
+				msg.channel.send("Aucun channel nommé "+ command[1]);
 			}
 		}else{
 			msg.channel.send("Aucun titre de channel. Utilisation !del channelName");
 		}
-	}else if(msg.content === '!help'){
+	}else if(command[0] === '!help'){
 		const helpEmbed = new MessageEmbed()
 			.setColor('#0099ff')
 			.setTitle("Aide")
@@ -63,8 +62,20 @@ client.on('message',(msg)=>{
 			.setTimestamp()
 			.setFooter("Copyrigth : Macaron macaron-dev.fr");
 		msg.channel.send(helpEmbed);
-	}else if(msg.content.startsWith("!set ")){
-		msg.channel.send("KKK");
+	}else if(command[0] === "!set"){
+		if(command[1] === "group"){
+		
+		}else if(command[1] === "type"){
+			if(command[2] === "voice"){
+				if(config.settings[msg.guild.id]){
+					msg.channel.send("NIKK");
+				}else{
+					msg.channel.send("merde");
+				}
+			}else if(command[2] === "text"){
+			
+			}
+		}
 	}
 	if(msg.content === 'ping'){
 		msg.reply("Pong le retour :)")
