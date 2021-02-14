@@ -14,10 +14,9 @@ client.on('message',(msg)=>{
 		return value !== "";
 	});
 	if(command[0] === "!new"){
-		let name = command[1];
-		if(msg.content[4] === " " && name !== ""){
-			if(!msg.guild.channels.cache.some((channel)=>channel.name === name)){
-				msg.guild.channels.create(name, {
+		if(command[1] !== ""){
+			if(!msg.guild.channels.cache.some((channel)=>channel.name === command[1])){
+				msg.guild.channels.create(command[1], {
 					type: 'text',
 					permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
 				}).then(()=>{
