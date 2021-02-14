@@ -64,7 +64,7 @@ module.exports = {
 		if(command[1] === "group"){
 		
 		}else if(command[1] === "type"){
-			if(command[2] === "voice" && command[2] === "text"){
+			if(command[2] === "voice" || command[2] === "text"){
 				fn.setSettings(config, msg.guild.id, "type", command[2]);
 				fn.writeJSON(config);
 				msg.channel.send("Type de Channel réglé à "+ command[2]);
