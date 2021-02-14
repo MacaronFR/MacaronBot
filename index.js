@@ -61,6 +61,8 @@ client.on('message',(msg)=>{
 			.setTimestamp()
 			.setFooter("Copyrigth : Macaron macaron-dev.fr");
 		msg.channel.send(helpEmbed);
+	}else if(msg.content.startsWith("!set")){
+		msg.channel.send("KKK");
 	}
 	if(msg.content === 'ping'){
 		msg.reply("Pong le retour :)")
