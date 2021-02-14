@@ -1,6 +1,7 @@
 const fs = require("fs")
 module.exports = {
 	writeJSON: function(object){
+		console.log(object);
 		fs.writeFile("config.json", JSON.stringify(object), (err)=>{console.log(err)});
 	},
 	setSettings: function(object, id, name, value){

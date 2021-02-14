@@ -61,7 +61,6 @@ module.exports = {
 		msg.channel.send(helpEmbed);
 	},
 	set: function(msg, command){
-		msg.channel.send("Test juste pour voir");
 		if(command[1] === "group"){
 		
 		}else if(command[1] === "type"){
