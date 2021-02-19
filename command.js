@@ -2,19 +2,24 @@ const {MessageEmbed} = require("discord.js");
 const config = require("./config.json");
 const fn = require("./function")
 module.exports = {
+	/**
+	 * execute the !new function
+	 * @param {Message} msg
+	 * @param {Array<string>} command
+	 */
 	new: function(msg, command){
 		if(command[1] !== ""){
 			if(!fn.channelExist(msg.guild.channels, command[1])){
-				let chanType;
+				let options = {permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]};
 				if(config.settings[msg.guild.id]){
-					chanType = config.settings[msg.guild.id].type;
+					options.type = config.settings[msg.guild.id].type;
+					let channel = msg.guild.channels.cache.find(chan => chan.name === config.settings[msg.guild.id].group);
+					if(channel !== undefined)
+						options.parent = channel
 				}else{
-					chanType = 'text';
+					options.type = 'text';
 				}
-				msg.guild.channels.create(command[1], {
-					type: chanType,
-					permissionOverwrites: [{id: msg.guild.id, allow: ['VIEW_CHANNEL']}]
-				}).then(()=>{
+				msg.guild.channels.create(command[1], options).then(()=>{
 					msg.channel.send("Channel créé");
 				}).catch(()=>{
 					msg.channel.send("Erreur lors de la création");
@@ -26,6 +31,11 @@ module.exports = {
 			msg.channel.send("Aucun titre de channel. Utilisation !new channelName");
 		}
 	},
+	/**
+	 * execute the !del function
+	 * @param {Message} msg
+	 * @param {Array<string>} command
+	 */
 	del: function(msg, command){
 		if(command[1] !== ""){
 			let chan = msg.guild.channels.cache.find(channel => channel.name === command[1]);
@@ -42,6 +52,10 @@ module.exports = {
 			msg.channel.send("Aucun titre de channel. Utilisation !del channelName");
 		}
 	},
+	/**
+	 * execute !help command
+	 * @param {Message}msg
+	 */
 	help: function(msg){
 		const helpEmbed = new MessageEmbed()
 			.setColor('#0099ff')
@@ -66,19 +80,19 @@ module.exports = {
 	 * @param {Array} command
 	 */
 	set: function(msg, command){
-		if(command[1] === "group"){
+		if(command[1] === "category"){
 			if(command[2]){
 				if(!fn.channelExist(msg.guild.channels, command[2])){
-						msg.guild.channels.create(command[2], {
-							type: "category",
-							permissionOverwrites: [{
-								id: msg.guild.id,
-								deny: ['MANAGE_MESSAGES'],
-								allow: ['SEND_MESSAGES']
-							}]
-						});
-					}
-					fn.setSettings(config, msg.guild.id, "group", command[2]);
+					msg.guild.channels.create(command[2], {
+						type: "category",
+						permissionOverwrites: [{
+							id: msg.guild.id,
+							deny: ['MANAGE_MESSAGES'],
+							allow: ['SEND_MESSAGES']
+						}]
+					});
+				}
+				fn.setSettings(config, msg.guild.id, "group", command[2]);
 			}
 		}else if(command[1] === "type"){
 			if(command[2] === "voice" || command[2] === "text"){
@@ -86,6 +100,8 @@ module.exports = {
 				fn.writeJSON(config);
 				msg.channel.send("Type de Channel réglé à "+ command[2]);
 			}
+		}else{
+			msg.channel.send("Utilisation de la commande : !set <category|type> <argument>");
 		}
 	}
 }

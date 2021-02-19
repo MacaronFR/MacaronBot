@@ -7,11 +7,17 @@ module.exports = {
 		if(object.settings[id]){
 			object.settings[id][name] = value;
 		}else{
-			object.settings[id] = {"type": "text", "group": "none"};
+			object.settings[id] = {"type": "text", "category": "none"};
 			object.settings[id].name = value;
 		}
 	},
-	channelExist(channelManager, name){
+	/**
+	 * check if channel named `name` exist
+	 * @param {GuildChannelManager} channelManager
+	 * @param {string} name
+	 * @returns {boolean}
+	 */
+	channelExist: function(channelManager, name){
 		return channelManager.cache.some((channel)=>channel.name === name)
 	}
 }
