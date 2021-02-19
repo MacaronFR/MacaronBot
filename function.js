@@ -8,7 +8,7 @@ module.exports = {
 			object.settings[id][name] = value;
 		}else{
 			object.settings[id] = {"type": "text", "category": "none"};
-			object.settings[id].name = value;
+			object.settings[id][name] = value;
 		}
 	},
 	/**
