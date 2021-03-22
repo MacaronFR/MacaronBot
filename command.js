@@ -68,7 +68,8 @@ module.exports = {
                     name: "Commande :",
                     value: "!help => Affiche cette aide\n" +
                         "!new <channelName> => Créer un nouveau channel nommé channelName\n" +
-                        "!del <channelName> => Supprime un channel nommé channelName"
+                        "!del <channelName> => Supprime un channel nommé channelName" +
+                        "!set <category|type> <argument> => Règle la catégorie dans laquelle est créer le channel ou son type"
                 }
             )
             .setTimestamp()
@@ -92,14 +93,19 @@ module.exports = {
                             allow: ['SEND_MESSAGES']
                         }]
                     });
+                    msg.channel.send("Catégorie des channels réglé à ", command[2]);
                 }
                 fn.setSettings(config, msg.guild.id, "group", command[2]);
+            }else{
+                msg.channel.send("Argument manquant\nUtilisation : !set category <nom_categorie>");
             }
         } else if (command[1] === "type") {
             if (command[2] === "voice" || command[2] === "text") {
                 fn.setSettings(config, msg.guild.id, "type", command[2]);
                 fn.writeJSON(config);
                 msg.channel.send("Type de Channel réglé à " + command[2]);
+            }else{
+                msg.channel.send("Argument manquant ou invalide\nUtilisation : !set type <voice|text>");
             }
         } else {
             msg.channel.send("Utilisation de la commande : !set <category|type> <argument>");
