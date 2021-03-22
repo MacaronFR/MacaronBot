@@ -61,7 +61,7 @@ module.exports = {
             .setColor('#0099ff')
             .setTitle("Aide")
             .setURL("http://discord.macaron-dev.fr")
-            .setAuthor("MacaronBot")
+            .setAuthor("MacaronBot V1.1")
             .setDescription("Toute les commandes disponible")
             .addFields({
                     name: "Commande :",
