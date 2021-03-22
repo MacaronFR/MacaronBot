@@ -66,7 +66,7 @@ module.exports = {
             .setDescription("Toute les commandes disponible")
             .addFields({
                     name: "Commande :",
-                    value: "!help => Afficphe cette aide\n" +
+                    value: "!help => Affiche cette aide\n" +
                         "!new <channelName> => Créer un nouveau channel nommé channelName\n" +
                         "!del <channelName> => Supprime un channel nommé channelName"
                 }
