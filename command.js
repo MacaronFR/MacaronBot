@@ -41,7 +41,7 @@ module.exports = {
             let chan = msg.guild.channels.cache.find(channel => channel.name === command[1]);
             if (chan !== undefined) {
                 chan.delete().then(() => {
-                    msg.channel.send("Channel supprimé");
+                    msg.channel.send("Channel supprimé").then();
                 }).catch(() => {
                     msg.channel.send("Erreur lors de la suppression");
                 })
