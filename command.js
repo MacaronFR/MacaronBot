@@ -20,15 +20,15 @@ module.exports = {
                     options.type = 'text';
                 }
                 msg.guild.channels.create(command[1], options).then(() => {
-                    msg.channel.send("Channel créé");
+                    msg.channel.send("Channel créé").then();
                 }).catch(() => {
-                    msg.channel.send("Erreur lors de la création");
+                    msg.channel.send("Erreur lors de la création").then();
                 })
             } else {
-                msg.channel.send("Ce channel existe déjà");
+                msg.channel.send("Ce channel existe déjà").then();
             }
         } else {
-            msg.channel.send("Aucun titre de channel. Utilisation !new channelName");
+            msg.channel.send("Aucun titre de channel. Utilisation !new channelName").then();
         }
     },
     /**

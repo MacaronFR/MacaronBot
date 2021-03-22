@@ -7,7 +7,7 @@ const client = new Client({
 	partials: ['GUILD_MEMBER','CHANNEL','USER','REACTION']
 });
 client.on('ready', ()=>{
-	client.user.setActivity('!help', {type: 'STREAMING'});
+	client.user.setActivity('!help', {type: 'STREAMING'}).then();
 });
 
 client.on('message',(msg)=>{
