@@ -67,7 +67,7 @@ module.exports = {
                     name: "Commande :",
                     value: "!help => Affiche cette aide\n" +
                         "!new <channelName> => Créer un nouveau channel nommé channelName\n" +
-                        "!del <channelName> => Supprime un channel nommé channelName" +
+                        "!del <channelName> => Supprime un channel nommé channelName\n" +
                         "!set <category|type> <argument> => Règle la catégorie dans laquelle est créer le channel ou son type"
                 }
             )
