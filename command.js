@@ -14,7 +14,6 @@ module.exports = {
                 if (config.settings[msg.guild.id]) {
                     options.type = config.settings[msg.guild.id].type;
                     let channel = msg.guild.channels.cache.find(chan => chan.name === config.settings[msg.guild.id].group);
-                    msg.channel.send(channel.name);
                     if (channel !== undefined)
                         options.parent = channel
                 } else {
